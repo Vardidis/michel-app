@@ -1,0 +1,115 @@
+<html>
+    <meta charset="utf-8"/>
+    <head  onLoad="getBalance()">
+        <title>Title...</title>
+        <style type="text/css">
+            *{
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            body{
+                font-family: Helvetica;
+                -webkit-font-smoothing: antialiased;
+                background: #F5F5DC;
+            }
+
+            h2{
+                text-align: center;
+                font-size: 18px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #324960;
+                padding: 30px 0;
+                position: absolute;
+                left: 250px;
+                margin: auto;
+            }
+
+            nav{
+                width: 100%;
+                text-align: center;
+            }
+
+            /*here*/
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+
+            li {
+                float: left;
+            }
+
+            li a, .dropbtn {
+                display: inline-block;
+                color: white;
+                text-align: center;
+                padding: 15px 20px;
+                text-decoration: none;
+                font-size: 24px;
+            }
+
+            li a:hover, .dropdown:hover .dropbtn{
+                background-color: #B24A4A;
+            }
+
+            li.dropdown {
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            li:last-child {
+                border-right: 100px;
+                border-style: rounded;
+                padding-right: 100px;
+                background: #B24A4A;
+                text-align: center;
+            }
+        </style>
+        <ul>
+            <li><a onClick="location.href = 'http://127.0.0.1:8000/'">Home</a></li>
+            <li><a onClick="location.href = 'http://127.0.0.1:8000/trades/'">Trades</a></li>
+            <li class="dropdown"><a onClick="location.href = 'http://127.0.0.1:8000/account/'">Account</a>
+                <div class="dropdown-content">
+                    <a onClick="location.href = 'http://127.0.0.1:8000/account/'">Stats</a>
+                    <a onClick="location.href = 'http://127.0.0.1:8000/account/'">History</a>
+                </div></li>
+            <li><a style="margin-left:300px">Michel App</a></li>
+          <li style="float:right"><a class="active" id="balance">0$</a></li>
+        </ul>
+        <script>
+        </script>
+    </head>
+    {% block content %}
+    {% endblock %}
+</html>

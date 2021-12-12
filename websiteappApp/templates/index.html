@@ -1,0 +1,328 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <body>
+    <style>
+        /* Table Styles */
+
+            .table-wrapper{
+                display: inline-block;
+                margin: 250px 70px 70px;
+                box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+            }
+
+            .fl-table {
+                border-radius: 5px;
+                font-size: 12px;
+                font-weight: normal;
+                border: none;
+                border-collapse: collapse;
+                width: 100%;
+                max-width: 100%;
+                height: 50%;
+                white-space: wrap;
+                background-color: white;
+            }
+
+            .fl-table td, .fl-table th {
+                text-align: center;
+                padding: 8px;
+                font-weight: bold;
+            }
+
+            .fl-table td {
+                border-right: 1px solid #f8f8f8;
+                font-size: 12px;
+            }
+
+            .fl-table thead th {
+                color: #ffffff;
+                background: #4FC3A1;
+            }
+
+            .fl-table thead th:nth-child(odd) {
+                color: #ffffff;
+                background: #324960;
+            }
+
+            .fl-table tr:nth-child(even) {
+                background: #F8F8F8;
+            }
+
+            /* Responsive */
+
+            @media (max-width: 30%) {
+                .fl-table {
+                    display: block;
+                    width: 30%;
+                }
+
+                .table-wrapper:before{
+                    content: "Scroll horizontally >";
+                    display: block;
+                    text-align: right;
+                    font-size: 11px;
+                    color: white;
+                    padding: 0 0 10px;
+                }
+
+                .fl-table thead, .fl-table tbody, .fl-table thead th {
+                    display: block;
+                }
+
+                .fl-table thead th:last-child{
+                    border-bottom: none;
+                }
+
+                .fl-table thead {
+                    float: left;
+                }
+
+                .fl-table tbody {
+                    width: 30%;
+                    position: relative;
+                    overflow-x: auto;
+                }
+
+                .fl-table td, .fl-table th {
+                    padding: 20px .625em .625em .625em;
+                    height: 60px;
+                    vertical-align: middle;
+                    box-sizing: border-box;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    width: 120px;
+                    font-size: 13px;
+                    text-overflow: ellipsis;
+                }
+
+                .fl-table thead th {
+                    text-align: left;
+                    border-bottom: 1px solid #f7f7f9;
+                }
+
+                .fl-table tbody tr {
+                    display: table-cell;
+                }
+
+                .fl-table tbody tr:nth-child(odd) {
+                    background: none;
+                }
+
+                .fl-table tr:nth-child(even) {
+                    background: transparent;
+                }
+
+                .fl-table tr td:nth-child(odd) {
+                    background: #F8F8F8;
+                    border-right: 1px solid #E6E4E4;
+                }
+
+                .fl-table tr td:nth-child(even) {
+                    border-right: 1px solid #E6E4E4;
+                }
+
+                .fl-table tbody td {
+                    display: block;
+                    text-align: center;
+                }
+            }
+    </style>
+        <div class="custom-divs">
+
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th id="11">Coin/Pair</th>
+                            <th id="12">Price</th>
+                            <th id="13">Change %</th>
+                            <th id="14">Change $</th>
+                            <th id="15">Action</th>
+                            <th id="16">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="21"></td>
+                            <td id="22"></td>
+                            <td id="23"></td>
+                            <td id="24"></td>
+                            <td id="25"></td>
+                            <td id="26" onClick="removeLine(2)"></td>
+                        </tr>
+                        <tr>
+                            <td id="31"></td>
+                            <td id="32"></td>
+                            <td id="33"></td>
+                            <td id="34"></td>
+                            <td id="35"></td>
+                            <td id="36" onClick="removeLine(3)"></td>
+                        </tr>
+                        <tr>
+                            <td id="41"></td>
+                            <td id="42"></td>
+                            <td id="43"></td>
+                            <td id="44"></td>
+                            <td id="45"></td>
+                            <td id="46" onClick="removeLine(4)"></td>
+                        </tr>
+                        <tr>
+                            <td id="51"></td>
+                            <td id="52"></td>
+                            <td id="53"></td>
+                            <td id="54"></td>
+                            <td id="55"></td>
+                            <td id="56" onClick="removeLine(5)"></td>
+                        </tr>
+                        <tr>
+                            <td id="61"></td>
+                            <td id="62"></td>
+                            <td id="63"></td>
+                            <td id="64"></td>
+                            <td id="65"></td>
+                            <td id="66" onClick="removeLine(6)"></td>
+                        </tr>
+                        <tr>
+                            <td id="71"></td>
+                            <td id="72"></td>
+                            <td id="73"></td>
+                            <td id="74"></td>
+                            <td id="75"></td>
+                            <td id="76" onClick="removeLine(7)"></td>
+                        </tr>
+                        <tr>
+                            <td id="81"></td>
+                            <td id="82"></td>
+                            <td id="83"></td>
+                            <td id="84"></td>
+                            <td id="85"></td>
+                            <td id="86" onClick="removeLine(8)"></td>
+                        </tr>
+                        <tr>
+                            <td id="91"></td>
+                            <td id="92"></td>
+                            <td id="93"></td>
+                            <td id="94"></td>
+                            <td id="95"></td>
+                            <td id="96" onClick="removeLine(9)"></td>
+                        </tr>
+                        <tr>
+                            <td id="101"></td>
+                            <td id="102"></td>
+                            <td id="103"></td>
+                            <td id="104"></td>
+                            <td id="105"></td>
+                            <td id="106" onClick="removeLine(10)"></td>
+
+                        </tr>
+                        <tr>
+                            <td id="111"></td>
+                            <td id="112"></td>
+                            <td id="113"></td>
+                            <td id="114"></td>
+                            <td id="115"></td>
+                            <td id="116" onClick="removeLine(11)"></td>
+                        </tr>
+                        <tbody>
+                    </table>
+                </div>
+            <h2>Watchlist</h2>
+            </div>
+        </body>
+    <script>
+            window.onload = function pageInit() {
+                getBalance();
+                fetchTable();
+            }
+
+            const getBalance = () => {
+                fetch('http://127.0.0.1:8000/api/getBalance')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("balance").text = data.balance+"$";
+                    })
+            }
+
+            const makeElement = (n) => {
+                var buyBtn = document.createElement("BUTTON");
+                buyBtn.innerHTML = "Buy";
+                buyBtn.style.fontWeight = "bold";
+                buyBtn.style.color = "white";
+                buyBtn.style.backgroundColor = "#4FC3A1";
+                buyBtn.style.marginRight = "4px";
+                buyBtn.addEventListener('click', function() { window.location = "./trades" });
+                document.getElementById(n).innerHTML = "";
+                document.getElementById(n).appendChild(buyBtn);
+                var sellBtn = document.createElement("BUTTON");
+                sellBtn.innerHTML = "Sell";
+                sellBtn.style.fontWeight = "bold";
+                sellBtn.style.backgroundColor = "#B24A4A";
+                sellBtn.style.color = "white";
+                sellBtn.style.marginRight = "1px";
+                sellBtn.addEventListener('click', function() { window.location = "./trades" });
+                document.getElementById(n).appendChild(sellBtn);
+            }
+
+            const initRemoveButton = (n) => {
+                var xButton = document.createElement("BUTTON");
+                xButton.innerHTML = "X";
+                xButton.style.color = "#B24A4A";
+                xButton.style.fontWeight = "bold";
+                xButton.style.fontSize = "18px";
+                xButton.style.backgroundColor = "transparent";
+                xButton.style.border = "none";
+                document.getElementById(n).appendChild(xButton);
+            }
+
+            const fetchTable = () => {
+                fetch('http://127.0.0.1:8000/api/fetchTable')
+                    .then(response => response.json())
+                    .then(data => {
+                        var n = 2;
+                        for(var i in data){
+                            if(parseInt(n) <= 11){
+                                document.getElementById(String(n)+"1").innerHTML = data[n-2].coin + '/' + data[n-2].pair;
+                                document.getElementById(String(n)+"1").value = String(data[n-2].id);
+                                document.getElementById(String(n)+"2").innerHTML = data[n-2].price;
+                                document.getElementById(String(n)+"3").innerHTML = data[n-2].changePrc;
+                                if(parseFloat(document.getElementById(String(n)+"3").innerHTML) > 0)
+                                    document.getElementById(String(n)+"3").style.color = "#4FC3A1";
+                                else
+                                    document.getElementById(String(n)+"3").style.color = "#B24A4A";
+                                document.getElementById(String(n)+"4").innerHTML = data[n-2].changePrice;
+                                if(parseFloat(document.getElementById(String(n)+"3").innerHTML) > 0){
+                                    document.getElementById(String(n)+"4").style.color = "#4FC3A1";
+                                    document.getElementById(String(n)+"4").innerHTML = "+" + document.getElementById(String(n)+"4").innerHTML + "$";
+                                }else{
+                                    document.getElementById(String(n)+"4").style.color = "#B24A4A";
+                                    document.getElementById(String(n)+"4").innerHTML = document.getElementById(String(n)+"4").innerHTML + "$";
+                                }
+                                document.getElementById(String(n)+"2").innerHTML = document.getElementById(String(n)+"2").innerHTML + "$";
+                                document.getElementById(String(n)+"3").innerHTML = document.getElementById(String(n)+"3").innerHTML + "%";
+                                makeElement(String(n)+"5");
+                                initRemoveButton(String(n)+"6");
+                            }
+                            n++;
+                        }
+                    })
+            }
+
+            const removeLine = (n) => {
+                var index = document.getElementById(String(n)+"1").value;
+                document.getElementById(String(n)+"1").remove();
+                document.getElementById(String(n)+"2").remove();
+                document.getElementById(String(n)+"3").remove();
+                document.getElementById(String(n)+"4").remove();
+                document.getElementById(String(n)+"5").remove();
+                document.getElementById(String(n)+"6").remove();
+                fetch('api/deleteFromTable/'+index)
+                    .then(response => {
+                        if(response == 0)
+                            alert('Something went wrong. Try again');
+                        else
+                            alert('Deleted from Watchlist successfully!');
+                    })
+            }
+    </script>
+{% endblock %}
