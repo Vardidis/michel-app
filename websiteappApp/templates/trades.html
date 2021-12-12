@@ -355,7 +355,7 @@
                 initPrompt();
             }
                 const fetchDropDown = () => {
-                        fetch("http://127.0.0.1:8000/api/getAllPairs")
+                        fetch("https://michel-app.herokuapp.com/api/getAllPairs")
                         .then(response => response.json())
                         .then(data => {
                             var dd = document.getElementById("dropDown");
@@ -432,7 +432,7 @@
                 const checkBalance = (total) => {
                     const lab = document.getElementById("lab");
                     var amount = parseFloat(document.getElementById("amountBox").value);
-                    fetch('http://127.0.0.1:8000/api/getBalance/')
+                    fetch('https://michel-app.herokuapp.com/api/getBalance/')
                         .then(response => response.json())
                         .then(data => {
                             if(data.balance >= amount)
@@ -455,7 +455,7 @@
                     }
                     var sel = document.getElementById("dropDown");
                     var pair = sel.options[sel.selectedIndex].value;
-                    fetch('http://127.0.0.1:8000/api/checkPortfolio/'+tot+'/'+tal+'/'+pair)
+                    fetch('https://michel-app.herokuapp.com/api/checkPortfolio/'+tot+'/'+tal+'/'+pair)
                         .then(response => response.text())
                         .then(data => {
                             if(data == 'True')        //True if amount <= owned coins
@@ -486,17 +486,17 @@
                     var sel = document.getElementById("dropDown");
                     var pair = sel.options[sel.selectedIndex].value;
                     if(event == "buy"){
-                        fetch("http://127.0.0.1:8000/api/"+pair+"/"+price+"/"+dec+"/"+amount+"/"+dec2+"/buy");
-                        fetch("http://127.0.0.1:8000/api/updateBalance/"+amount+"/"+dec2+"/buy");
+                        fetch("https://michel-app.herokuapp.com/api/"+pair+"/"+price+"/"+dec+"/"+amount+"/"+dec2+"/buy");
+                        fetch("https://michel-app.herokuapp.com/api/updateBalance/"+amount+"/"+dec2+"/buy");
                     }else{
-                        fetch("http://127.0.0.1:8000/api/"+pair+"/"+price+"/"+dec+"/"+amount+"/"+dec2+"/sell");
+                        fetch("https://michel-app.herokuapp.com/api/"+pair+"/"+price+"/"+dec+"/"+amount+"/"+dec2+"/sell");
 
                     }
                     location.reload();
                 }
 
                 const getBalance = () => {
-                fetch('http://127.0.0.1:8000/api/getBalance')
+                fetch('https://michel-app.herokuapp.com/api/getBalance')
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById("balance").innerHTML = data.balance+"$";
@@ -504,7 +504,7 @@
                 }
 
                 const fetchTable = () => {
-                    fetch('http://127.0.0.1:8000/api/fetchOpenOrders')
+                    fetch('https://michel-app.herokuapp.com/api/fetchOpenOrders')
                         .then(response => response.json())
                         .then(data => {
                             var n = 2;
@@ -548,7 +548,7 @@
                         dec2 = arr[1];
                     }
                     if (document.getElementById(String(n)+"1").style.backgroundColor == "rgb(79, 195, 161)"){
-                        fetch("http://127.0.0.1:8000/api/updateBalance/"+amount+"/"+dec2+"/sell")
+                        fetch("https://michel-app.herokuapp.com/api/updateBalance/"+amount+"/"+dec2+"/sell")
                             .then(response => {
                                 if(response)
                                     alert("Removed from list. Refunded " + (parseFloat(amount) + parseFloat(dec2)) + "$");
@@ -561,7 +561,7 @@
                     document.getElementById(String(n)+"2").remove();
                     document.getElementById(String(n)+"3").remove();
                     document.getElementById(String(n)+"4").remove();
-                    fetch('http://127.0.0.1:8000/api/deleteOpenOrders/'+index)
+                    fetch('https://michel-app.herokuapp.com/api/deleteOpenOrders/'+index)
                         .then(response => {
                             if(response)
                                 alert('Something went wrong. Try again');
@@ -574,7 +574,7 @@
                 const addFav = () => {
                     var sel = document.getElementById("dropDown")
                     var pair = sel.options[sel.selectedIndex].value;
-                    fetch('http://127.0.0.1:8000/api/addFav/' + pair)
+                    fetch('https://michel-app.herokuapp.com/api/addFav/' + pair)
                         .then(response => {
                             if(response)
                                 alert('Something went wrong. Try again');
