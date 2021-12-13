@@ -5,6 +5,9 @@ import requests
 import json
 from binance import Client
 import datetime
+import os
+
+uri = os.environ[MONGODB_URI]
 
 def index(request):
     return render(request, 'index.html')
@@ -16,7 +19,7 @@ def account(request):
     return render(request, 'account.html', {"data": 123})
 
 def getAllPairs(request):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['all_pairs']
     res = collection.find({})
@@ -26,7 +29,7 @@ def getAllPairs(request):
     return HttpResponse(json.dumps(pairs))
 
 def postOrder(request, coin, pair, price, dec, amount, dec2, event):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['open_orders']
     coin = str({coin})
@@ -52,14 +55,14 @@ def postOrder(request, coin, pair, price, dec, amount, dec2, event):
     return render(request, 'trades.html')
 
 def getBalance(request):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['balance']
     res = collection.find_one({"_id": 0})
     return HttpResponse(json.dumps(res))
 
 def fetchTable(request):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['watchlist']
     api_key = '0aerC4IeFAwP8eauUrDUeDhTRk26m8i3hjsoBWavTYQzvWFLxY8ja7EjlwzCqZ7F'
@@ -86,7 +89,7 @@ def changePrice(open, close):
     return close-open
 
 def removeTable(request, id):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['watchlist']
     id = int(id)
@@ -97,7 +100,7 @@ def removeTable(request, id):
         return HttpResponse(False)
 
 def fetchOpenOrders(request):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['open_orders']
     res = collection.find({})
@@ -107,7 +110,7 @@ def fetchOpenOrders(request):
     return HttpResponse(json.dumps(data))
 
 def removeOrders(request, id):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['open_orders']
     id = int(id)
@@ -118,7 +121,7 @@ def removeOrders(request, id):
         return HttpResponse(False)
 
 def addFav(request,coin, pair):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['watchlist']
     api_key = '0aerC4IeFAwP8eauUrDUeDhTRk26m8i3hjsoBWavTYQzvWFLxY8ja7EjlwzCqZ7F'
@@ -134,7 +137,7 @@ def addFav(request,coin, pair):
     return HttpResponse(0)
 
 def updateBalance(request, tot, tal, event):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['balance']
     res = collection.find({})
@@ -151,7 +154,7 @@ def updateBalance(request, tot, tal, event):
     return HttpResponse(True)
 
 def checkPortfolio(request, tot, tal, coin, pair):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['portfolio']
     tot = float(tot)
@@ -167,7 +170,7 @@ def checkPortfolio(request, tot, tal, coin, pair):
     return HttpResponse(False)
 
 def fetchPortfolio(request):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['portfolio']
     api_key = '0aerC4IeFAwP8eauUrDUeDhTRk26m8i3hjsoBWavTYQzvWFLxY8ja7EjlwzCqZ7F'
@@ -186,7 +189,7 @@ def fetchPortfolio(request):
     return HttpResponse(json.dumps(data))
 
 def fetchHistory(request):
-    client = pymongo.MongoClient('mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['history_trades']
     res = collection.find({})
