@@ -84,10 +84,12 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'virBin',
-        'HOST': 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-        'USER': 'fivosvardis',
-        'PASSWORD': '123.456.789',
+        'CLIENT': {
+            'host': 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+            'username': 'fivosvardis',
+            'password': '123.456.789',
+            'authMechanism': 'SCRAM-SHA-1'
+        }
     }
 }
 
