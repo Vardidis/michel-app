@@ -7,7 +7,7 @@ from binance import Client
 import datetime
 import os
 
-uri = os.environ[MONGODB_URI]
+uri = 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 def index(request):
     return render(request, 'index.html')

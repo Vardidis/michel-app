@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'websiteapp.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 '''
 DATABASES = {
-    'default': {
+    {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
@@ -85,7 +85,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'virBin',
-        'HOST': '61a122bdf443497d56aa7351'
+        'HOST': 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+        'USER': 'fivosvardis',
+        'PASSWORD': '123.456.789',
     }
 }
 
