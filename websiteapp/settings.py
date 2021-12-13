@@ -87,8 +87,6 @@ DATABASES = {
         'ENGINE': 'djongo',
         'CLIENT': {
             'host': 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-            'username': 'fivosvardis',
-            'password': '123.456.789',
             'authMechanism': 'SCRAM-SHA-1'
         }
     }
