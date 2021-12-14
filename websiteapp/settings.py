@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'CLIENT': {
-            'host': os.environ['MONGO_URI'],
+            'host': 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
             'authMechanism': 'SCRAM-SHA-1',
         }
     }
