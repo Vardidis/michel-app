@@ -7,7 +7,9 @@ from binance import Client
 import datetime
 import os
 
-uri = 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+uri = os.environ['MONGO_URI']
+api_key = os.environ['API_KEY']
+api_secret = os.environ['API_SECRET']
 
 def index(request):
     return render(request, 'index.html')
@@ -65,8 +67,6 @@ def fetchTable(request):
     client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['watchlist']
-    api_key = '0aerC4IeFAwP8eauUrDUeDhTRk26m8i3hjsoBWavTYQzvWFLxY8ja7EjlwzCqZ7F'
-    api_secret = 'eAokMAhVWEhO4eJ7j1yL91iuMfeI4gd43eKZWtHwBlijrx3SUAAU2meTun9Hawry'
     client = Client(api_key, api_secret)
     res = collection.find({})
     data = []
@@ -124,8 +124,6 @@ def addFav(request,coin, pair):
     client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['watchlist']
-    api_key = '0aerC4IeFAwP8eauUrDUeDhTRk26m8i3hjsoBWavTYQzvWFLxY8ja7EjlwzCqZ7F'
-    api_secret = 'eAokMAhVWEhO4eJ7j1yL91iuMfeI4gd43eKZWtHwBlijrx3SUAAU2meTun9Hawry'
     client = Client(api_key, api_secret)
     res = collection.find({})
     index = -1
@@ -173,8 +171,6 @@ def fetchPortfolio(request):
     client = pymongo.MongoClient(uri)
     db = client['binVirt']
     collection = db['portfolio']
-    api_key = '0aerC4IeFAwP8eauUrDUeDhTRk26m8i3hjsoBWavTYQzvWFLxY8ja7EjlwzCqZ7F'
-    api_secret = 'eAokMAhVWEhO4eJ7j1yL91iuMfeI4gd43eKZWtHwBlijrx3SUAAU2meTun9Hawry'
     client = Client(api_key, api_secret)
     res = collection.find({})
     data = []
