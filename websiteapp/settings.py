@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_DJANGO']
+SECRET_KEY = os.environ.get('SECRET_KEY', True)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'CLIENT': {
-            'host': os.environ['MONGODB_URI'],
+            'host': os.environ.get('MONGODB_URI', True),
             'authMechanism': 'SCRAM-SHA-1',
         }
     }

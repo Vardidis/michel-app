@@ -7,9 +7,9 @@ from binance import Client
 import datetime
 import os
 
-uri = os.environ['MONGODB_URI']
-api_key = os.environ['API_KEY']
-api_secret = os.environ['SECRET_API']
+uri = os.environ.get('MONGODB_URI', True)
+api_key = os.environ.get('API_KEY', True)
+api_secret = os.environ.get('SECRET_API', True)
 
 def index(request):
     return render(request, 'index.html')
