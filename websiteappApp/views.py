@@ -60,30 +60,30 @@ def postOrder(request, coin, pair, price, dec, amount, dec2, event):
     return render(request, 'trades.html')
 
 def getBalance(request):
-    # client = pymongo.MongoClient(uri)
-    # db = client['binVirt']
-    # collection = db['balance']
-    # res = collection.find_one({"_id": 0})
-    # return HttpResponse(json.dumps(res))
-    url = os.environ['DATABASE_URL'] + "findOne"
-
-    payload = json.dumps({
-        "collection": "balance",
-        "database": "binVirt",
-        "dataSource": "Cluster0",
-        "projection": {
-            "_id": 0
-        }
-    })
-    headers = {
-        'Content-Type': 'application/json',
-        'Access-Control-Request-Headers': '*',
-        'api-key': '61a122bdf443497d56aa7351'
-    }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
-
-    return HttpResponse(response.text)
+    client = pymongo.MongoClient(uri)
+    db = client['binVirt']
+    collection = db['balance']
+    res = collection.find_one({"_id": 0})
+    return HttpResponse(json.dumps(res))
+    # url = os.environ['DATABASE_URL'] + "findOne"
+    #
+    # payload = json.dumps({
+    #     "collection": "balance",
+    #     "database": "binVirt",
+    #     "dataSource": "Cluster0",
+    #     "projection": {
+    #         "_id": 0
+    #     }
+    # })
+    # headers = {
+    #     'Content-Type': 'application/json',
+    #     'Access-Control-Request-Headers': 'no-cors',
+    #     'api-key': '61a122bdf443497d56aa7351'
+    # }
+    #
+    # response = requests.request("POST", url, headers=headers, data=payload)
+    #
+    # return HttpResponse(response.text)
 
 
 def fetchTable(request):
