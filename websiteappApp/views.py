@@ -11,6 +11,25 @@ uri = 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstD
 api_key = '0aerC4IeFAwP8eauUrDUeDhTRk26m8i3hjsoBWavTYQzvWFLxY8ja7EjlwzCqZ7F'
 api_secret = 'eAokMAhVWEhO4eJ7j1yL91iuMfeI4gd43eKZWtHwBlijrx3SUAAU2meTun9Hawry'
 
+url = "https://data.mongodb-api.com/app/data-hggpo/endpoint/data/beta/action/findOne"
+
+payload = json.dumps({
+    "collection": "balance",
+    "database": "binVirt",
+    "dataSource": "Cluster0",
+    "projection": {
+        "_id": 0
+    }
+})
+headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Request-Headers': '*',
+    'api-key': '61a122bdf443497d56aa7351'
+}
+
+
+
+
 def index(request):
     return render(request, 'index.html')
 
