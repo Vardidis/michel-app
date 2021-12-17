@@ -7,9 +7,9 @@ from binance import Client
 import datetime
 import os
 
-uri = os.environ.get('MONGODB_URI', True)
-api_key = os.environ.get('API_KEY', True)
-api_secret = os.environ.get('SECRET_API', True)
+uri = 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+api_key = '0aerC4IeFAwP8eauUrDUeDhTRk26m8i3hjsoBWavTYQzvWFLxY8ja7EjlwzCqZ7F'
+api_secret = 'eAokMAhVWEhO4eJ7j1yL91iuMfeI4gd43eKZWtHwBlijrx3SUAAU2meTun9Hawry'
 
 def index(request):
     return render(request, 'index.html')
