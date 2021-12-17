@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_(m1(#x=gzr2vbsqk-##l$f5(2#o8yu79yhec*uz$knx&!66*6'
+SECRET_KEY = os.environ['SECRET_DJANGO']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'CLIENT': {
-            'host': 'mongodb+srv://fivosvardis:123.456.789@cluster0.74bck.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+            'host': os.environ['MONGODB_URI'],
             'authMechanism': 'SCRAM-SHA-1',
         }
     }
