@@ -577,9 +577,9 @@
                     fetch('https://michel-app.herokuapp.com/api/addFav/' + pair)
                         .then(response => {
                             if(response)
-                                alert('Something went wrong. Try again');
-                            else
                                 alert('Added to Watchlist successfully!');
+                            else
+                                alert('Something went wrong. Try again');
                         })
                 }
         </script>

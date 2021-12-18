@@ -135,8 +135,11 @@ def addFav(request,coin, pair):
         index = i['_id']
     klines = client.get_historical_klines(coin+pair, Client.KLINE_INTERVAL_1DAY, "1 day ago UTC")
     for i in klines:
-        collection.insert_one({"_id": index+1, "coin": coin, "pair": pair, "price": "{:.3f}".format(float(i[4])), "changePrc": "{:.2f}".format(changePercent(i[1], i[4])), "changePrice": "{:.2f}".format(changePrice(i[1], i[4]))})
-    return HttpResponse(0)
+        try:
+            collection.insert_one({"_id": index+1, "coin": coin, "pair": pair, "price": "{:.3f}".format(float(i[4])), "changePrc": "{:.2f}".format(changePercent(i[1], i[4])), "changePrice": "{:.2f}".format(changePrice(i[1], i[4]))})
+            return HttpResponse(True)
+        except:
+            return HttpResponse(False)
 
 def updateBalance(request, tot, tal, event):
     client = pymongo.MongoClient(uri)
