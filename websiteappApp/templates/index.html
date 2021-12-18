@@ -237,7 +237,7 @@
             }
 
             const getBalance = () => {
-                fetch('http://127.0.0.1:8000/api/getBalance')
+                fetch('https://https://michel-app.herokuapp.com/api/getBalance')
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById("balance").text = data.balance+"$";
@@ -276,7 +276,7 @@
             }
 
             const fetchTable = () => {
-                fetch('http://127.0.0.1:8000/api/fetchTable')
+                fetch('https://https://michel-app.herokuapp.com/api/fetchTable')
                     .then(response => response.json())
                     .then(data => {
                         var n = 2;
