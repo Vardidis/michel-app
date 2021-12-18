@@ -237,7 +237,7 @@
             }
 
             const getBalance = () => {
-                fetch('https://michel-binance.herokuapp.com/api/getBalance')
+                fetch('https://michel-app.herokuapp.com/api/getBalance')
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById("balance").text = data.balance+"$";
@@ -276,7 +276,7 @@
             }
 
             const fetchTable = () => {
-                fetch('https://michel-binance.herokuapp.com/api/fetchTable')
+                fetch('https://michel-app.herokuapp.com/api/fetchTable')
                     .then(response => response.json())
                     .then(data => {
                         var n = 2;
