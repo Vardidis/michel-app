@@ -241,7 +241,7 @@
             fetchHistory();
         }
         const getBalance = () => {
-            fetch('http://127.0.0.1:8000/api/getBalance')
+            fetch('https://michel-app.herokuapp.com/api/getBalance')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById("balance").innerHTML = data.balance + "$";
@@ -249,7 +249,7 @@
         }
 
         const fetchPortfolio = () => {
-            fetch('http://127.0.0.1:8000/api/fetchPortfolio')
+            fetch('https://michel-app.herokuapp.com/api/fetchPortfolio')
                 .then(response => response.json())
                 .then(data => {
                     var n = 2;
@@ -274,7 +274,7 @@
         }
 
         const fetchHistory = () => {
-            fetch('http://127.0.0.1:8000/api/fetchHistory')
+            fetch('https://michel-app.herokuapp.com/api/fetchHistory')
                 .then(response => response.json())
                 .then(data => {
                     var n = 8;
