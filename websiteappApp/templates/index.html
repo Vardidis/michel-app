@@ -234,6 +234,7 @@
             window.onload = function pageInit() {
                 getBalance();
                 fetchTable();
+                //getData();
             }
 
             const getBalance = () => {
@@ -243,7 +244,15 @@
                         document.getElementById("balance").text = data.balance+"$";
                     })
             }
-
+/*
+            const getData = () => {
+                fetch('http://127.0.0.1:8000/api/getData')
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                    })
+            }
+*/
             const makeElement = (n) => {
                 var buyBtn = document.createElement("BUTTON");
                 buyBtn.innerHTML = "Buy";
