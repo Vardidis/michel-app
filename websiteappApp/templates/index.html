@@ -247,6 +247,7 @@
 
             const getData = () => {
                 fetch('https://michel-app/api/getData')
+                    .then(response => response.text())
             }
 
             const makeElement = (n) => {
