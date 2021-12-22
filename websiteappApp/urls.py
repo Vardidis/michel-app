@@ -17,5 +17,5 @@ urlpatterns = [
 	path('api/checkPortfolio/<int:tot>/<int:tal>/<str:coin>/<str:pair>', views.checkPortfolio),
 	path('api/fetchPortfolio/', views.fetchPortfolio),
 	path('api/fetchHistory', views.fetchHistory),
-	# path('api/getData', views.getData),
+	path('api/getData', views.getData),
 ]
