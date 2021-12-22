@@ -203,10 +203,15 @@ def fetchHistory(request):
         data.append({"time": i['time'], "pair": i['pair'], "price": i['price'], "amount": i['amount'], "event": i['event']})
     return HttpResponse(json.dumps(data))
 
-# def getData(request):
-#     client = pymongo.MongoClient(uri)
-#     db = client['binVirt']
-#     collection = db['all_pairs']
-#     hostname = socket.gethostname()
-#     ip_address = socket.gethostbyname(hostname)
-#     return HttpResponse(ip_address)
+def getData(request):
+    client = pymongo.MongoClient(uri)
+    db = client['binVirt']
+    collection = db['users']
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+    res = collection.find({})
+    index = -1
+    for i in res:
+        index = i['_id']
+    collection.insert_one({"_id": index+1, "IP": ip_address, "hostname": hostname})
+    return HttpResponse(True)
