@@ -1,6 +1,5 @@
 -- Michel App version 1.0.0 --
 @author : Vardidis
-@github : https://github.com/Vardidis
 
 
 * This is a cryptocurrency trading simulator web application *
